@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <div>
+         <img src="/static/plot_bar.png" />
+            <form action = "/" method = "GET">
+                <input type = "submit" value="Back to Home Page"  name = "back"/>
+            </form>
+    </div>
+{% endblock %}
