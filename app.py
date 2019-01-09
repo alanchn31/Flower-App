@@ -49,7 +49,7 @@ def upload_file():
 def uploaded(file_path):
     #file_path = request.args['file_path']
     model_path = 'model/udacity_proj_densenet_121_model.pt'
-    model = torch.load(model_path,map_location=lambda storage, location: 'cpu')
+    model = torch.load(model_path,map_location='cpu')
     plot_bar(file_path, model)
     return redirect(url_for('result'))
 
