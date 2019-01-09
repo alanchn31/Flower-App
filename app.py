@@ -30,7 +30,8 @@ def upload_file():
            flash('No selected file')
            return redirect(request.url)
        if file and allowed_file(file.filename):
-           file.save(file.filename)
+           file_path = file.filename
+           file.save(file_path)
            return redirect(url_for('.uploaded', file_path=file_path))
 
 @app.route('/uploaded')
