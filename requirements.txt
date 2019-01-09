@@ -1,14 +1,8 @@
-Click==7.0
 Flask==1.0.2
-Jinja2==2.10
-MarkupSafe==1.1.0
+torch==1.0.0
+torchvision==0.2.1
 numpy==1.15.4
-pandas==0.23.4
-Werkzeug==0.14.1
-#torch==1.0.0
-http://download.pytorch.org/whl/cpu/torch-1.0.0-cp37-cp37m-linux_x86_64.whl
-torchvision
-gunicorn
-pillow
+Pillow==5.3.0
+gunicorn==19.9.0
 matplotlib
 
