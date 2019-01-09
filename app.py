@@ -9,9 +9,6 @@ import torch
 app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
-UPLOAD_FOLDER = 'images'
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -33,8 +30,7 @@ def upload_file():
            flash('No selected file')
            return redirect(request.url)
        if file and allowed_file(file.filename):
-           file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-           file.save(file_path)
+           file.save(file.filename)
            return redirect(url_for('.uploaded', file_path=file_path))
 
 @app.route('/uploaded')

@@ -110,5 +110,5 @@ def plot_bar(image_path, model):
     ax2.set_title('Class Probability')
     ax2.set_xlim(0, 1.1)
     plt.tight_layout()
-    plt.savefig('static/plot_bar.png',bbox_inches='tight',pad_inches = 0.0)
+    plt.savefig('plot_bar.png',bbox_inches='tight',pad_inches = 0.0)
 
