@@ -6,7 +6,7 @@ numpy==1.15.4
 pandas==0.23.4
 Werkzeug==0.14.1
 #torch==1.0.0
-https://download.pytorch.org/whl/cpu/torch-1.0.0-cp37-cp37m-linux_x86_64.whl
+http://download.pytorch.org/whl/cpu/torch-1.0.0-cp37-cp37m-linux_x86_64.whl
 torchvision
 gunicorn
 pillow
