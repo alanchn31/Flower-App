@@ -47,7 +47,7 @@ def upload_file():
 
 @app.route('/uploaded/<file_path>')
 def uploaded(file_path):
-    file_path = request.args['file_path']
+    #file_path = request.args['file_path']
     model_path = 'model/udacity_proj_densenet_121_model.pt'
     model = torch.load(model_path,map_location=lambda storage, location: 'cpu')
     plot_bar(file_path, model)
