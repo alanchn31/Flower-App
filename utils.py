@@ -4,6 +4,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
 import json
+import os
 
 with open('data/cat_to_name.json', 'r') as f:
     cat_to_name = json.load(f)
@@ -97,6 +98,9 @@ def predict(image_path, model, topk=5, train_on_gpu=False):
     return probs, classes
 
 def plot_bar(image_path, model):
+    APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+    target = os.path.join(APP_ROOT,'static/')
+    destination = "/".join([target,"plot_bar.png"])
     result = process_image(image_path)
     res = torch.from_numpy(result)
     fig, (ax1, ax2) = plt.subplots(figsize=(6,9), ncols=2)
@@ -110,5 +114,5 @@ def plot_bar(image_path, model):
     ax2.set_title('Class Probability')
     ax2.set_xlim(0, 1.1)
     plt.tight_layout()
-    plt.savefig('/static/plot_bar.png',bbox_inches='tight',pad_inches = 0.0)
+    plt.savefig(destination,bbox_inches='tight',pad_inches = 0.0)
 
