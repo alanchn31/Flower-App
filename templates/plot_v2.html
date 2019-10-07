@@ -10,7 +10,7 @@
 
 {% block content %}
     <div>
-         <img src="{{ url_for('static', filename = 'flower.png') }}" />
+         <img src="{{ url_for('static', filename = 'flower.png') }}"  width="2000" height="2000"/>
          {{ the_script|safe }}
          {{ the_div|safe }}
             <form action = "/" method = "GET">
