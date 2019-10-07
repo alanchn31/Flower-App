@@ -1,4 +1,6 @@
 flower
 flowenv
 .ipynb_checkpoints
+__pycache__
+.idea
 Untitled.ipynb
