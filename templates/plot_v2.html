@@ -11,10 +11,8 @@
 {% block content %}
     <div>
          <img src="{{ url_for('static', filename = 'flower.png') }}" />
+         {{ the_script|safe }}
          {{ the_div|safe }}
-        <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
-        <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.js"></script>
-        {{ the_script|safe }}
             <form action = "/" method = "GET">
                 <input type = "submit" value="Back to Home Page"  name = "back"/>
             </form>
