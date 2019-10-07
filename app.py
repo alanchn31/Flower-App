@@ -43,7 +43,7 @@ def upload_file():
        if file and allowed_file(file.filename):
            file_path = file.filename
            file.save(file_path)
-           return redirect(url_for('.uploaded', file_path=file_path))
+           return redirect(url_for('uploaded', file_path=file_path))
 
 @app.route('/uploaded/<file_path>')
 def uploaded(file_path):
