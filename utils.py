@@ -1,10 +1,15 @@
 import torch
 import torch.nn.functional as F
-from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
 import json
 import os
+from bokeh.models import ColumnDataSource, HoverTool
+from bokeh.layouts import column
+from bokeh.palettes import Spectral7
+from bokeh.plotting import figure
+from bokeh.embed import components
+from PIL import Image
 
 with open('data/cat_to_name.json', 'r') as f:
     cat_to_name = json.load(f)
@@ -116,3 +121,31 @@ def plot_bar(image_path, model):
     plt.tight_layout()
     plt.savefig(destination,bbox_inches='tight',pad_inches = 0.0)
 
+def plot_bar_v2(image_path, model):
+    result = process_image(image_path)
+    res = torch.from_numpy(result)
+    fig, ax = plt.subplots(figsize=(6,9))
+    imshow(res, ax)
+    plt.axis('off')
+    destination = "/".join([target,"flower.png"])
+    plt.savefig(destination, bbox_inches='tight',pad_inches = 0.0)
+    probs, classes = predict(image_path,model)
+    classes = list(map(lambda x: cat_to_name[x], classes))
+
+    source = ColumnDataSource(data=dict(classes=classes, probs=probs, color=Spectral7))
+    hover = HoverTool(tooltips=[
+        ("index", "$index"),
+        ("class", "@classes"),
+        ("prob", "$y"),
+    ])
+    p = figure(x_range=classes, y_range=(0,1), plot_height=350, 
+            title="Probabilities of Flower Classes Predictions",
+            toolbar_location=None, tools=[hover])
+
+    p.vbar(x='classes', top='probs', width=0.9, color='color', legend="classes", source=source)
+
+    p.xgrid.grid_line_color = None
+    p.legend.orientation = "vertical"
+    p.legend.location = "top_right"
+    script, div = components(p)
+    return script, div

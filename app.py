@@ -1,4 +1,7 @@
 import os
+from bokeh.models import ColumnDataSource, HoverTool
+from bokeh.palettes import Spectral6
+from bokeh.plotting import figure
 from flask import Flask, request, render_template, flash, \
     redirect, url_for
 
@@ -54,7 +57,7 @@ def upload_file():
        if file and allowed_file(file.filename):
            file_path = file.filename
            file.save(file_path)
-           return redirect(url_for('uploaded', file_path=file_path))
+           return redirect(url_for('uploaded_v2', file_path=file_path))
 
 @app.route('/uploaded/<file_path>')
 def uploaded(file_path):
@@ -63,6 +66,14 @@ def uploaded(file_path):
     model = torch.load(model_path,map_location='cpu')
     plot_bar(file_path, model)
     return redirect(url_for('result'))
+
+@app.route('/uploaded_v2/<file_path>')
+def uploaded_v2(file_path):
+    #file_path = request.args['file_path']
+    model_path = 'model/udacity_proj_densenet_121_model.pt'
+    model = torch.load(model_path,map_location='cpu')
+    script, div = plot_bar_v2(file_path, model)
+    return render_template('plot_v2.html', title='Flower App', the_div=div, the_script=script)
 
 @app.route('/result')
 def result():
