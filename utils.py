@@ -122,6 +122,8 @@ def plot_bar(image_path, model):
     plt.savefig(destination,bbox_inches='tight',pad_inches = 0.0)
 
 def plot_bar_v2(image_path, model):
+    APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+    target = os.path.join(APP_ROOT,'static/')
     result = process_image(image_path)
     res = torch.from_numpy(result)
     fig, ax = plt.subplots(figsize=(6,9))
