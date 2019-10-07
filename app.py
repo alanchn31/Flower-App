@@ -35,8 +35,8 @@ def index():
 @app.after_request
 def add_header(response):
     # response.cache_control.no_store = True
-    response.headers['Cache-Control'] = 'no-store, no-cache, must-
-    revalidate, post-check=0, pre-check=0, max-age=0'
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, \
+                                         post-check=0, pre-check=0, max-age=0'
     response.headers['Pragma'] = 'no-cache'
     response.headers['Expires'] = '-1'
     return response
