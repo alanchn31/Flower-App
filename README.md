@@ -1,5 +1,5 @@
-FLower app is now deployed on Heroku!  
-To access, visit: https://flower102-app-alanchn31.herokuapp.com  
+Flower app is now deployed on Heroku!  
+To access, visit: http://flower102-app-alanchn31.herokuapp.com  
 Upload a flower image and a plot of the top 5 classes classified is shown
 
 Flower app can also be run by pulling Docker Image through command:  
