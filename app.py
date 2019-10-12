@@ -1,7 +1,4 @@
 import os
-from bokeh.models import ColumnDataSource, HoverTool
-from bokeh.palettes import Spectral6
-from bokeh.plotting import figure
 from flask import Flask, request, render_template, flash, \
     redirect, url_for
 
